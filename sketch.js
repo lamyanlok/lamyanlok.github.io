@@ -55,7 +55,7 @@ function classifyPose() {
 
 function gotResult(error, results) {
   
-  if (results[0].confidence > 0.75) {
+  if (results[0].confidence > 0.7) {
     poseLabel = results[0].label.toUpperCase();
   }
   //console.log(results[0].confidence);
@@ -110,7 +110,7 @@ function draw() {
   if (command ==0){
     tcommand = "JAB";
   }else if(command ==1) {
-    tcommand = "HOOK";
+    tcommand = "BLOCK";
   }else if(command ==2) {
     tcommand = "UPPERCUT";
   }
@@ -119,7 +119,7 @@ function draw() {
   
   //text("frameCount: "+frameCount,width/3,height/1.2);
   
-  if(frameCount ==300){
+  if(frameCount ==180){
     command = random([0,1,2]);
     if (previous == command){
       command +=1;
@@ -130,7 +130,7 @@ function draw() {
     //console.log(command);
     frameCount =0
   }
-  if(frameCount ==240){
+  if(frameCount ==120){
     if(poseLabel =="J" && command ==0){
       c = color('rgb(0,0,255)');
       fill(c);
@@ -159,7 +159,7 @@ function draw() {
       
   }
   
-  if (frameCount>=240)
+  if (frameCount>=120)
   {
     c = color('rgb(0,0,255)');
     fill(c);
@@ -170,7 +170,7 @@ function draw() {
       text("miss", 150, height / 2);
     }
     // If the spent time is above the defined duration
-    if (frameCount >290)
+    if (frameCount >170)
     {
       // Stop displaying the message, thus resume the ball moving
       bDisplayMessage = false;
